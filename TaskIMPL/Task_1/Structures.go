@@ -2,6 +2,7 @@ package Task_1
 
 type Person struct {
 	Name    string
+	Gender  bool
 	Age     uint8
 	Address string
 }
@@ -9,7 +10,7 @@ type Person struct {
 type BankAccount struct {
 	Number  int
 	Balance int
-	Owner   string
+	Owner   Person
 }
 
 type BankClients struct {
