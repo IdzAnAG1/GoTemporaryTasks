@@ -6,21 +6,34 @@ import (
 )
 
 type AboutPerson interface {
-	// Установка для значений структуры Person
+
+	// SetPersonName - Установка имени для Персоны
 	SetPersonName(name string)
+	// SetPersonAge - Установка возраста Персоны
 	SetPersonAge(age uint8)
+	// SetPersonAddress - Установка адреса Персоны
 	SetPersonAddress(address string)
-	// Получение значений структуры Person
+
+	// GetPersonName - Получение Имени Персоны
 	GetPersonName() string
+	// GetPersonAge - Получение Возраста Персоны
 	GetPersonAge() uint8
+	// GetPersonAddress - Получение Адреса Персоны
 	GetPersonAddress() string
 	// String - метод для вывода информации
 	String()
 }
 
-// Реализация методов
-func (p *Person) SetPersonName(name string) {
+/* Реализация методов */
+
+/* Сеттеры */
+
+func (p *Person) SetPersonName(name string) error {
+	if p.Name == "" {
+		return errors.New("имя не может быть пустим")
+	}
 	p.Name = name
+	return nil
 }
 func (p *Person) SetPersonAge(age uint8) error {
 	if age > 105 {
@@ -32,9 +45,16 @@ func (p *Person) SetPersonAge(age uint8) error {
 	p.Age = age
 	return nil
 }
-func (p *Person) SetPersonAddress(address string) {
+func (p *Person) SetPersonAddress(address string) error {
+	if p.Address == "" {
+		return errors.New("адрес не может быть пустым ")
+	}
 	p.Address = address
+	return nil
 }
+
+/* Геттеры */
+
 func (p *Person) GetPersonName() string {
 	return p.Name
 }
@@ -44,6 +64,8 @@ func (p *Person) GetPersonAge() uint8 {
 func (p *Person) GetPersonAddress() string {
 	return p.Address
 }
+
+/* Вывод в консоль */
 
 func (p *Person) String() string {
 	return fmt.Sprintf("Карточка Person : {\n\t Имя : %s \n\t Возраст : %d \n\t Адресс : %s \n }", p.Name, p.Age, p.Address)
