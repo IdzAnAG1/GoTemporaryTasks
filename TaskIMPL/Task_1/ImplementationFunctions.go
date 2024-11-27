@@ -15,6 +15,7 @@ func (ba *BankAccount) SetBalance() {
 }
 
 func (ba *BankAccount) SetOwner(p Person) error {
+
 	if p.Age < 14 {
 		return errors.New("Не проходит по возрастной категории ")
 	}
