@@ -37,9 +37,9 @@ func (lib *Library) IssueBook(title, author string) error {
 	return errors.New("Нет таких книг в библиотеке ")
 }
 
-func (lib *Library) ReturnBook(title, author string) error {
+func (lib *Library) ReturnBook(title string) error {
 	for _, book := range lib.Books {
-		if book.Title == title && book.Author == author && book.Status == false {
+		if book.Title == title && book.Status == false {
 			book.Status = true
 			return nil
 		}
