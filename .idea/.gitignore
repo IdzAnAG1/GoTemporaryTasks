@@ -6,3 +6,5 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+# Storage for mini-game
+SIdekick_01\TempTasks\Temp_1\Configures\CityEnemies.go

@@ -1,0 +1,25 @@
+ Из пакета os можно использовать две функции для записи данных в файл: os.Create() и os.OpenFile()
+
+        1) os.Create - Функция принимающая один параметр на входе и это имя файла
+    ```go
+
+        func WriteTheFIle(filename string) error {
+            file, err := os.Create(filename)
+            if err != nil {
+                return err
+            }
+            defer file.Close()
+
+            _,err = file.WriteString("Привет, мир")
+            if err != nil {
+                return err
+            }
+
+            _,err = file.Write([]byte("Привет, мир 2"))
+            if err != nil {
+                return err
+            }
+
+        }
+
+    ```
