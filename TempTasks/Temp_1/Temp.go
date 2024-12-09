@@ -9,7 +9,7 @@ func Gog() {
 
 	player := SetPlayer()
 
-	city := &Location{
+	City := &Location{
 		Name:        constatns.CITY,
 		Description: constatns.CITY,
 		Enemies:     Enemies.CityEnemies,
@@ -44,7 +44,7 @@ func Gog() {
 	world := &World{
 		Locations: map[string]*Location{
 			"harbor":          harbor,
-			"city":            city,
+			"city":            City,
 			"desert":          desert,
 			"cave":            cave,
 			"obstacle_course": obstacle_course,
@@ -57,7 +57,7 @@ func Gog() {
 		World:   world,
 		Running: false,
 	}
-	player.Location = city
+	player.Location = City
 
 	game.Start()
 }

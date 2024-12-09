@@ -11,8 +11,16 @@ type test struct {
 }
 
 var (
-	num_1 = []test{{Description: "Первый JSON вывод"}, {Description: "Второй JSON вывод"}, {Description: "Третий JSON вывод"}}
-	num_2 = []test{{Description: "Четвертый JSON вывод"}, {Description: "Пятый JSON вывод"}, {Description: "Шестой JSON вывод"}}
+	num_1 = []test{
+		{Description: "Первый JSON вывод"},
+		{Description: "Второй JSON вывод"},
+		{Description: "Третий JSON вывод"},
+	}
+	num_2 = []test{
+		{Description: "Четвертый JSON вывод"},
+		{Description: "Пятый JSON вывод"},
+		{Description: "Шестой JSON вывод"},
+	}
 )
 
 func Sunday_01_12_2024() {

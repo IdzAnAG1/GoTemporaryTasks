@@ -1,6 +1,7 @@
 package Temp_1
 
 import (
+	"SIdekick_01/TempTasks/Temp_1/Enemies"
 	"SIdekick_01/TempTasks/Temp_1/constatns"
 	"bufio"
 	"fmt"
@@ -20,7 +21,6 @@ func (g *Game) Action_1() {
 	choice = scanner.Text()
 
 	switch choice {
-
 	case "Гавань":
 		g.Player.Location = g.World.Locations["harbor"]
 	case "Родной Город":
@@ -43,20 +43,33 @@ func (g *Game) Action_1() {
 
 func (g *Game) Action_2() {
 	fmt.Println("Список врагов")
-
 	for _, enm := range g.Player.Location.Enemies {
 		fmt.Printf("%s : {"+
 			"\n\t Здороовье : %d ,"+
 			"\n\t Урон : %d,"+
 			"\n}\n", enm.Name, enm.HeatPoint, enm.Attack)
 		fmt.Println()
+		if len(g.Player.Location.Enemies) == 0 {
+			fmt.Println("Нет врагов")
+		}
 	}
 }
 func Action_3() {
 	fmt.Println("Третье действие")
+
 }
 func Action_4() {
 	fmt.Println("Четвертое действие")
+	fmt.Println(Enemies.CityEnemies)
+}
+func (g *Game) Action_6() {
+	var pass int
+	fmt.Println("Введите пароль администратора")
+	fmt.Scan(&pass)
+	if pass == 146098 {
+		fmt.Println("Доступ разрешен")
+		Enemies.InsertInMap()
+	}
 }
 func Default() {
 	fmt.Println("Нет таких действий")
@@ -84,7 +97,13 @@ func (g *Game) Update() {
 	case 4:
 		Action_4()
 	case 5:
+		err := Enemies.SaveEnemiesInFile()
+		if err != nil {
+			_ = fmt.Errorf("Ошибка сохранения данных %v ", err)
+		}
 		g.Running = false
+	case 2003:
+		g.Action_6()
 	default:
 		Default()
 	}
